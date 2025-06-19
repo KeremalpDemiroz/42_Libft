@@ -6,13 +6,15 @@
 /*   By: kedemiro <kedemiro@student.42istanbul.com. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 18:59:41 by kedemiro          #+#    #+#             */
-/*   Updated: 2025/05/28 19:07:58 by kedemiro         ###   ########.fr       */
+/*   Updated: 2025/06/16 14:17:30 by kedemiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_isprint(int i)
 {
-	if (i >= 32 && i <= 127)
+	if (i >= 32 && i < 127)
 	{
 		return (1);
 	}

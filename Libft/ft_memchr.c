@@ -1,18 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kedemiro <kedemiro@student.42istanbul.com. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/01 14:55:09 by kedemiro          #+#    #+#             */
-/*   Updated: 2025/06/16 14:04:53 by kedemiro         ###   ########.fr       */
+/*   Created: 2025/06/04 11:22:19 by kedemiro          #+#    #+#             */
+/*   Updated: 2025/06/18 20:46:49 by kedemiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_memchr(const void *s, int c, size_t len)
 {
-	ft_memset(s, 0, n);
+	unsigned char	*cast_s;
+	unsigned char	cast_c;
+	size_t			i;
+
+	cast_s = (unsigned char *)s;
+	cast_c = (unsigned char)c;
+	i = 0;
+	if (len == 0 || !s)
+		return (NULL);
+	while (i + 1 <= len)
+	{
+		if (cast_s[i] == cast_c)
+			return (&cast_s[i]);
+		i++;
+	}
+	if (cast_c == '\0' && i <= len)
+		return (&cast_s[i]);
+	return (NULL);
 }
