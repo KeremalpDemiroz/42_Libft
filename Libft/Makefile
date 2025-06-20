@@ -50,6 +50,7 @@ norm:
 	norminette $(SRCS)
 
 run:all clean
+	clear
 	@$(CC) $(CFLAGS) main.c $(NAME)
 	@./a.out
 

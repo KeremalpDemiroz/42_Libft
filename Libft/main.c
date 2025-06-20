@@ -1,17 +1,19 @@
 #include "libft.h"
 #include <stdio.h>
+
 int main()
 {
-	char **result;
-	int i = 0;
-	char *tmp = "merhaba bu bir testtir.";
-	result = ft_split(tmp, ' ');
-	while(result[i])
+	const char s[] ="      split       this for   me  !       ";
+	char **split;
+	size_t i = 0;
+	split = ft_split(s, ' ');
+	printf("------------------------------------------------------------------------------\n");
+	while (i < 5)
 	{
-		printf("%s\n", result[i++]);
-		// free(result[i]);
+		printf("main : -%s-\n", split[i]);
+		i++;
 	}
-	// free(result);
-// char c= ' ';
-// int c_count = 0;
+	free(split);
+	return 0;
+
 }
