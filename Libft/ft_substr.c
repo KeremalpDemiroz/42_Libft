@@ -25,22 +25,18 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (temp);
 	}
 	if (ft_strlen(s) - start < len)
-	{
 		temp_len = ft_strlen(s) - start;
-	}
 	else 
 		temp_len = len;
 	i = 0;
 	temp = malloc(temp_len +1);
 	if (!temp)
 		return (NULL);
-	while (len != 0 && s[start + i] != '\0')
+	while (i !=  len && s[start + i] != '\0')
 	{
 		temp[i] = s[start + i];
 		i++;
-		len--;
 	}
 	temp[i] = '\0';
 	return (temp);
 }
-// "merhaba" 3  100000  ->  "haba" 
