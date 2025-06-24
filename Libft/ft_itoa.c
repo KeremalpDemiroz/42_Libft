@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kedemiro <kedemiro@student.42istanbul.com. +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/24 14:10:12 by kedemiro          #+#    #+#             */
+/*   Updated: 2025/06/24 20:10:37 by kedemiro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
@@ -32,10 +42,11 @@ char	*ft_itoa(int n)
 	if (!result)
 		return (NULL);
 	result[digits--] = '\0';
-	if (temp == 0)
-		return ("0");
-	if (temp  == -2147483648)
-		return ("-2147483648");
+	if (temp == -2147483648)
+	{
+		result[digits--] = 8 + 48;
+		temp = 214748364;
+	}
 	if (temp < 0)
 		temp = -temp;
 	while (digits >= 0)
@@ -44,10 +55,6 @@ char	*ft_itoa(int n)
 		temp /= 10;
 	}
 	if (n < 0)
-	result[0] = '-';
+		result[0] = '-';
 	return (result);
-}
-int main()
-{
-	printf("%s\n", ft_itoa());
 }

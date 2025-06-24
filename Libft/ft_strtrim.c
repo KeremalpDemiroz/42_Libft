@@ -6,7 +6,7 @@
 /*   By: kedemiro <kedemiro@student.42istanbul.com. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:37:53 by kedemiro          #+#    #+#             */
-/*   Updated: 2025/06/20 20:34:29 by kedemiro         ###   ########.fr       */
+/*   Updated: 2025/06/23 17:01:12 by kedemiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	start;
 	size_t	end;
 	char	*result;
-	
+
 	start = new_start(s1, set);
-	if(start == ft_strlen(s1))
+	if (start == ft_strlen(s1))
 		return (ft_strdup(""));
 	end = new_end(s1, set) - start;
 	result = ft_substr(s1, start, (end + 1));

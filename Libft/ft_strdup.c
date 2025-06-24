@@ -6,7 +6,7 @@
 /*   By: kedemiro <kedemiro@student.42istanbul.com. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 16:12:57 by kedemiro          #+#    #+#             */
-/*   Updated: 2025/06/19 18:40:56 by kedemiro         ###   ########.fr       */
+/*   Updated: 2025/06/23 17:04:05 by kedemiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strdup(const char *s)
 	size_t	j;
 
 	tmp = malloc(ft_strlen(s) + 1);
-if(!tmp)
+	if (!tmp)
 		return (NULL);
 	j = 0;
 	while (s[j] != '\0')

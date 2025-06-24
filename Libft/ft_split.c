@@ -6,37 +6,13 @@
 /*   By: kedemiro <kedemiro@student.42istanbul.com. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:51:34 by kedemiro          #+#    #+#             */
-/*   Updated: 2025/06/20 21:05:20 by kedemiro         ###   ########.fr       */
+/*   Updated: 2025/06/24 21:52:33 by kedemiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
-/*
-	# 2. dereceden fonksiyonlar null ile bitmez!
-*/
-static char *new_word(char const *s, char c)
-{
-	char *new_word;
-	int	i;
-	int	sw;
 
-	i = 0;
-	
-	while (s[i])
-	{
-		sw = 0;
-		while(s[i] == c && s[i])
-			i++;
-		while (s[i] != c && s[i])
-		{
-			new_word[j] = s[j]; 
-			i++;
-		}
-	}
-	return ();
-	
-}
 static	int	w_counter(char const *s, char c)
 {
 	int	c_count;
@@ -48,7 +24,7 @@ static	int	w_counter(char const *s, char c)
 	while (s[i])
 	{
 		sw = 0;
-		while(s[i] == c && s[i])
+		while (s[i] == c && s[i])
 			i++;
 		while (s[i] != c && s[i])
 		{
@@ -60,94 +36,62 @@ static	int	w_counter(char const *s, char c)
 	}
 	return (c_count);
 }
-static char	*len_to_start(const char *s, size_t start, size_t  len)
+
+static int	ft_word_len(char *s, char c)
 {
-	size_t 	i;
+	int	i;
+
+	i = 0;
+	if (s[i] == c)
+	{
+		while (s[i] == c && s[i] != '\0')
+			i++;
+		return (i);
+	}
+	else
+	{
+		while (s[i] != c && s[i] != '\0')
+			i++;
+		return (i);
+	}
+}
+
+static void	*all_free(char **split, int a)
+{
+	if (!split[a])
+	{
+		while (a >= 0)
+			free(split[a--]);
+		free(split);
+	}
+	return (NULL);
+}
+
+char	**ft_split(const char *s, char c)
+{
+	char	**split;
 	char	*tmp;
+	int		i;
+	int		a;
 
 	tmp = (char *)s;
-	if (ft_strlen(tmp) <= start)
-		return (NULL);
-	i = 0;
-	while (i < len && s[start + i] != '\0')
-	{
-		tmp[i] = s[start + i];
-		i++;
-	}
-	tmp[i] = '\0';
-	return (tmp);
-} 
-char	**ft_split(char const *s, char c)
-{
-	
-	char	**split;
-	char	*yeni;
-	char	*tmp;
-	int		j;
-
-	tmp = (char*)s; 
-	j = w_counter(s,c) -1;
-	split = malloc(sizeof(char *) * (j + 1));
+	a = 0;
+	split = malloc(sizeof(char *) * (w_counter(s, c) + 1));
 	if (!split)
 		return (NULL);
-	while (j >= 0)
+	while (*tmp)
 	{
-		tmp = ft_strtrim(tmp, &c);
-		if (j != 0)
-			yeni = ft_substr(ft_strrchr(tmp, c), 1, (ft_strlen(ft_strrchr(tmp, c))));
-		else
-			yeni = tmp;
-		if (j != 0)
-			tmp = len_to_start(tmp,0,(ft_strlen(tmp) - ft_strlen(yeni) - 1));
-		split[j] = malloc(ft_strlen(yeni));
-		if (!split[j])
-			// ft_free gibi bir func gerek
-			return (NULL);
-		split[j] = yeni; //
-		j--;
-		//free(yeni);
+		if (*tmp == c)
+			i = ft_word_len(tmp, c);
+		tmp = &tmp[i];
+		if (ft_strlen(tmp) != 0)
+		{
+			split[a] = ft_substr(tmp, 0, (ft_word_len(tmp, c)));
+			all_free(split, a);
+			a++;
+			tmp = &tmp[ft_word_len(tmp, c)];
+		}
 	}
-	j = w_counter(s,c);
-	split[j] = NULL;
+	split[a] = NULL;
 	return (split);
-}  
-/*
-"merhaba dünya naber" c = ' ' ||     7(strlentmp) != (19 - 12 = 7)  
-										" naber" n (6 -1) n 
-"yeni : merhaba dünya naber"  					19 -5 -1 = 13      0           13 
-"tmp : merhaba dünya" 						13 - 5 -1= 7
-"merhaba" 								7
-
-
-#include <stdio.h>
-#include <string.h>
-static int *a(char *s, char c)
-{
-  int i = 0;
-  int j = 0;
-
-  while (s[i] != c)
-    i++;
-  if(s[i] == c)
-  {
-  while (s[i] == c)
-  i++;
-   while(s[i+j])
-    {
-      s[j] = s[i + j];
-      j++;
-    }
-    s[j] = '\0';
-  }
-  return (1);
 }
-
-int main()
-{
-  
-  char s[] = "Hello world";
-  int r = a(s,' ');
-  if(r)
-    printf("%s", s);
-}
-*/  
