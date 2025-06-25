@@ -1,19 +1,53 @@
+#include "libft.h"
+#include <stdio.h>
+#include <fcntl.h>
 
-#include "my_utils.h"
-#ifndef _VA_LIST
-typedef __builtin_va_list va_list;
-#define _VA_LIST
-
-char **init_str_array(int n, ...)
+char	ft_upper(unsigned int i, char c)
 {
-	va_list argp;
-	char **result = calloc(n, sizeof(char *));
-
-	va_start(argp, n);
-	for (int i = 0; i < n; i++)
-		result[i] = va_arg(argp, char *);
-
-	va_end(argp);
-	return result;
+	(void)i;
+	if (c >= 97 && c <= 122)
+		c -= 32;
+	return (c);
 }
-char **expected = init_str_array(2, "hello!", NULL);
+
+int main()
+{
+	char s[] = "Merhaba dunya bu bir test kahve ariyoruz";
+	
+	char **split = ft_split(s, ' ');
+	int fd = open("soru_1", O_CREAT | O_RDWR| O_APPEND|O_TRUNC,0644);
+	int i = 0;
+	while (i < 7)
+		ft_putstr_fd(split[i++], fd);
+	while (i >= 0)
+		free(split[i--]);
+	free(split);
+	printf("%d\n", fd);
+	close(fd);
+	printf("------------------------------\n");
+
+
+
+	i = 0;
+	char *d = ft_strmapi(s, *ft_upper);
+	
+	printf("%s\n", d);
+	
+	char **asplit = ft_split(d, ' ');
+	/* printf("%s", asplit[0]); */
+	int fd1 = open("soru_2", O_CREAT | O_RDWR, 0644);
+	
+	while (asplit[i])
+	{
+		printf("%s\n",asplit[i]);
+		ft_putendl_fd(asplit[i], fd1);
+		i++;
+	}
+	
+	while (i >= 0)
+		free(asplit[i--]);
+	
+	free(asplit);
+	
+	close(fd1);
+}

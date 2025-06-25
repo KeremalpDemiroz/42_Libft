@@ -6,7 +6,7 @@
 /*   By: kedemiro <kedemiro@student.42istanbul.com. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 11:22:19 by kedemiro          #+#    #+#             */
-/*   Updated: 2025/06/25 13:34:42 by kedemiro         ###   ########.fr       */
+/*   Updated: 2025/06/25 19:27:35 by kedemiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memchr(const void *s, int c, size_t len)
 	cast_s = (unsigned char *)s;
 	cast_c = (unsigned char)c;
 	i = 0;
-	if (len == 0 || !s)
+	if (len == 0)
 		return (NULL);
 	while (i < len)
 	{
@@ -30,4 +30,13 @@ void	*ft_memchr(const void *s, int c, size_t len)
 		i++;
 	}
 	return (NULL);
+}
+#include <stdio.h>
+int main()
+{
+	int i = 0;
+	int  s[] = {2, 6, 2, 4, 3, 6, 8, 5, 3, 6, 3, 5};
+	int *a = ft_memchr(s, 3, 8);
+	while (i < 9)
+		printf("%d",a[i++]);
 }
