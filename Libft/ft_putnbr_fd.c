@@ -6,7 +6,7 @@
 /*   By: kedemiro <kedemiro@student.42istanbul.com. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 19:40:49 by kedemiro          #+#    #+#             */
-/*   Updated: 2025/06/24 20:30:27 by kedemiro         ###   ########.fr       */
+/*   Updated: 2025/06/25 13:24:58 by kedemiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +36,4 @@ void	ft_putnbr_fd(int n, int fd)
 		c = (n % 10 + '0');
 		write(fd, &c, 1);
 	}
-}
-int main()
-{
-		/*Merhaba dunya bu bir test kahve ariyoruz bu strin space gore 
-		formatlayip dosya içine tek satır olarak yazdırılacak*/
-		/*
-		Merhaba dunya bu bir test kahve ariyoruz harfler buyultulup
-		dosya icine alt alta yazdırılacak */
-		/*
-		cikti:
-			MERHABA
-			DUNYA
-			BU
-			...
-		*/
-		
 }

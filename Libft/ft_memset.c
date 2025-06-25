@@ -6,11 +6,12 @@
 /*   By: kedemiro <kedemiro@student.42istanbul.com. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 14:35:56 by kedemiro          #+#    #+#             */
-/*   Updated: 2025/06/14 14:49:52 by kedemiro         ###   ########.fr       */
+/*   Updated: 2025/06/25 14:04:07 by kedemiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 void	*ft_memset(void *s, int c, size_t n)
 {

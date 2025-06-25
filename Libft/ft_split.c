@@ -6,7 +6,7 @@
 /*   By: kedemiro <kedemiro@student.42istanbul.com. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:51:34 by kedemiro          #+#    #+#             */
-/*   Updated: 2025/06/24 21:52:33 by kedemiro         ###   ########.fr       */
+/*   Updated: 2025/06/25 14:57:31 by kedemiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,9 @@ static int	ft_word_len(char *s, char c)
 
 static void	*all_free(char **split, int a)
 {
-	if (!split[a])
-	{
-		while (a >= 0)
-			free(split[a--]);
-		free(split);
-	}
+	while (a >= 0)
+		free(split[a--]);
+	free(split);
 	return (NULL);
 }
 
@@ -84,14 +81,30 @@ char	**ft_split(const char *s, char c)
 		if (*tmp == c)
 			i = ft_word_len(tmp, c);
 		tmp = &tmp[i];
-		if (ft_strlen(tmp) != 0)
-		{
-			split[a] = ft_substr(tmp, 0, (ft_word_len(tmp, c)));
-			all_free(split, a);
-			a++;
-			tmp = &tmp[ft_word_len(tmp, c)];
-		}
+		if (ft_strlen(tmp) == 0)
+			break;
+		split[a] = ft_substr(tmp, 0, (ft_word_len(tmp, c)));
+		if(!split[a])
+			return (all_free(split, a));
+		a++;
+		tmp = &tmp[ft_word_len(tmp, c)];
 	}
 	split[a] = NULL;
 	return (split);
 }
+
+// int main()
+// {
+// 	char *s = "hello!";
+// 	char **result = ft_split(s, ' ');
+	
+// 	int i = 0;
+// 	while (result[i])
+// 	{
+// 		printf("%p : -%s-\n", result[i] ,result[i]);
+// 		i++;
+// 	}
+// 	while(i >= 0)
+// 		free(result[i--]);
+// 	free(result);
+// }
