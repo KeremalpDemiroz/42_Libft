@@ -23,13 +23,11 @@ void	*ft_memchr(const void *s, int c, size_t len)
 	i = 0;
 	if (len == 0 || !s)
 		return (NULL);
-	while (i + 1 <= len)
+	while (i < len)
 	{
 		if (cast_s[i] == cast_c)
 			return (&cast_s[i]);
 		i++;
 	}
-	if (cast_c == '\0' && i <= len)
-		return (&cast_s[i]);
 	return (NULL);
 }
