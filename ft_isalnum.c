@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kedemiro <kedemiro@student.42istanbul.com. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 19:40:49 by kedemiro          #+#    #+#             */
-/*   Updated: 2025/06/25 13:24:58 by kedemiro         ###   ########.fr       */
+/*   Created: 2025/05/27 19:56:02 by kedemiro          #+#    #+#             */
+/*   Updated: 2025/06/26 17:35:11 by kedemiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <fcntl.h>
-#include <stdio.h>
-
-void	ft_putnbr_fd(int n, int fd)
+int	ft_isalnum(int i)
 {
-	char	c;
-
-	if (n == -2147483648)
-		write(fd, "-2147483648", 11);
-	else if (n < 0)
+	if (!(i >= '0' && i <= '9'))
 	{
-		write(fd, "-", 1);
-		n *= -1;
+		if (!(i >= 'a' && i <= 'z'))
+		{
+			if (!(i >= 'A' && i <= 'Z'))
+			{
+				return (0);
+			}
+		}
 	}
-	if (n >= 0 && n <= 9)
-	{
-		c = (n + '0');
-		write(fd, &c, 1);
-	}
-	if (n > 9)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		c = (n % 10 + '0');
-		write(fd, &c, 1);
-	}
+	return (1);
 }

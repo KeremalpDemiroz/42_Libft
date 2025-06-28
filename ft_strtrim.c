@@ -6,7 +6,7 @@
 /*   By: kedemiro <kedemiro@student.42istanbul.com. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:37:53 by kedemiro          #+#    #+#             */
-/*   Updated: 2025/06/23 17:01:12 by kedemiro         ###   ########.fr       */
+/*   Updated: 2025/06/26 17:38:27 by kedemiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	result = ft_substr(s1, start, (end + 1));
 	return (result);
 }
-// #include <stdio.h>
-// int main()
-// {
-// 	char s1[] = "asasasa-merhaba-asasassa";
-// 	char set[] = "as";
-
-// 	char *r;
-// 	r = ft_strtrim(s1,set);
-// 	printf("%s", r);
-// 	free(r);
-// 	return (0);
-// }

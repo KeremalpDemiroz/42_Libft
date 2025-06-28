@@ -1,42 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kedemiro <kedemiro@student.42istanbul.com. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 11:22:19 by kedemiro          #+#    #+#             */
-/*   Updated: 2025/06/25 19:27:35 by kedemiro         ###   ########.fr       */
+/*   Created: 2025/06/16 16:12:57 by kedemiro          #+#    #+#             */
+/*   Updated: 2025/06/26 16:49:24 by kedemiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t len)
+char	*ft_strdup(const char *s)
 {
-	unsigned char	*cast_s;
-	unsigned char	cast_c;
-	size_t			i;
+	char	*tmp;
+	size_t	j;
 
-	cast_s = (unsigned char *)s;
-	cast_c = (unsigned char)c;
-	i = 0;
-	if (len == 0)
+	tmp = malloc(ft_strlen(s) + 1);
+	if (!tmp)
 		return (NULL);
-	while (i < len)
+	j = 0;
+	while (s[j] != '\0')
 	{
-		if (cast_s[i] == cast_c)
-			return (&cast_s[i]);
-		i++;
+		tmp[j] = s[j];
+		j++;
 	}
-	return (NULL);
-}
-#include <stdio.h>
-int main()
-{
-	int i = 0;
-	int  s[] = {2, 6, 2, 4, 3, 6, 8, 5, 3, 6, 3, 5};
-	int *a = ft_memchr(s, 3, 8);
-	while (i < 9)
-		printf("%d",a[i++]);
+	tmp[j] = '\0';
+	return (tmp);
 }

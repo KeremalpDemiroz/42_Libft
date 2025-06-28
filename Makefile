@@ -61,4 +61,4 @@ run:all clean
 	@$(CC) $(CFLAGS) main.c $(NAME)
 	@./a.out
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re norm run cc 

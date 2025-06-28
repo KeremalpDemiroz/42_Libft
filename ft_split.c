@@ -6,12 +6,11 @@
 /*   By: kedemiro <kedemiro@student.42istanbul.com. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:51:34 by kedemiro          #+#    #+#             */
-/*   Updated: 2025/06/25 17:58:39 by kedemiro         ###   ########.fr       */
+/*   Updated: 2025/06/26 16:52:28 by kedemiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static	int	w_counter(char const *s, char c)
 {
